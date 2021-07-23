@@ -20,7 +20,7 @@ public class TweenManager : Singleton<TweenManager>
         transformToMove.position = target.transform.position;
     }
 
-    public IEnumerator FadeTo(CanvasGroup canvasGroup, float targetFade)
+    public IEnumerator FadeToSequence(CanvasGroup canvasGroup, float targetFade)
     {
 
         if (canvasGroup.alpha < targetFade)

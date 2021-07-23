@@ -30,12 +30,12 @@ public class TriviaPanelController : MonoBehaviour
 
 public interface ITriviaQuestion
 {
-    public string GetQuestionText();
-    public List<ITriviaAnswer> GetAnswers();
+    string GetQuestionText();
+    List<ITriviaAnswer> GetAnswers();
 }
 
 public interface ITriviaAnswer
 {
-    public string GetAnswerText();
-    public GameObject GetAnswerPrefab();
+    string GetAnswerText();
+    GameObject GetAnswerPrefab();
 }
