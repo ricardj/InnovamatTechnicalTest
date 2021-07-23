@@ -19,7 +19,10 @@ public class TriviaAnswerSO : ScriptableObject, ITriviaAnswer
         return answerText;
     }
 
-    
+    TriviaAnswerSO ITriviaAnswer.GetTriviaAnswerSO()
+    {
+        return this;
+    }
 }
 
 

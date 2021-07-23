@@ -14,6 +14,8 @@ public class TriviaManager : MonoBehaviour
 
     public TriviaPanelController triviaPanelController;
 
+    TriviaQuestionSO currentTriviaQuestion;
+
     public void Start()
     {
         currentQuestionsPool = new Queue<TriviaQuestionSO>();
@@ -25,10 +27,10 @@ public class TriviaManager : MonoBehaviour
         while (true)
         {
             FillCurrentQuestions();
-            while(currentQuestionsPool.Count > 0)
+            while (currentQuestionsPool.Count > 0)
             {
-                TriviaQuestionSO triviaQuestion = currentQuestionsPool.Dequeue();
-                yield return triviaPanelController.ShowTriviaQuestionSequence((ITriviaQuestion)triviaQuestion);
+                currentTriviaQuestion = currentQuestionsPool.Dequeue();
+                yield return triviaPanelController.ShowTriviaQuestionSequence((ITriviaQuestion)currentTriviaQuestion);
 
             }
             yield return null;
@@ -42,6 +44,11 @@ public class TriviaManager : MonoBehaviour
         {
             currentQuestionsPool.Enqueue(question);
         });
+    }
+
+    public bool IsCorrectAnswer(ITriviaAnswer triviaAnswer)
+    {
+        return currentTriviaQuestion.IsCorrectAnswer(triviaAnswer.GetTriviaAnswerSO());
     }
 
 }

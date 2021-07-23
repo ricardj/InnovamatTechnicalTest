@@ -5,19 +5,23 @@ using System.Linq;
 
 public class TriviaAnswersPanelController : MonoBehaviour
 {
+    public TriviaPanelController triviaPanelController;
     public List<TriviaButtonController> triviaButtons;
 
+    List<ITriviaAnswer> triviaAnswers;
 
     [Header("Animation parameters")]
     public float delayBetweenButtonAnimations = 0.3f;
 
     private void Start()
     {
-        HideTriviaButtons();
+        HideButtonsFast();
+        triviaButtons.ForEach(triviaButton => triviaButton.OnButtonClicked.AddListener(OnTriviaButtonClicked));
     }
 
     public void ShowAnswers(List<ITriviaAnswer> triviaAnswers)
     {
+        this.triviaAnswers = triviaAnswers;
         PopulateButtons(triviaAnswers);
         ShowTriviaButtons();
     }
@@ -28,8 +32,23 @@ public class TriviaAnswersPanelController : MonoBehaviour
 
         for (int i = 0; i < triviaButtons.Count; i++)
         {
+
             triviaButtons[i].Configure(triviaAnswers[i]);
         }
+    }
+
+    public void OnTriviaButtonClicked(TriviaButtonController triviaButtonController)
+    {
+        bool isCorrect = triviaPanelController.IsCorrectAnswer(triviaAnswers[triviaButtons.IndexOf(triviaButtonController)]);
+        if (isCorrect)
+        {
+            triviaButtonController.RightFeedback();
+        }
+        else
+        {
+            triviaButtonController.WrongFeedback();
+        }
+
     }
 
     public void ShowTriviaButtons()
@@ -58,5 +77,10 @@ public class TriviaAnswersPanelController : MonoBehaviour
             triviaButtons[i].Hide();
             yield return new WaitForSeconds(delayBetweenButtonAnimations);
         }
+    }
+
+    public void HideButtonsFast()
+    {
+        triviaButtons.ForEach(triviaButton => triviaButton.HideFast());
     }
 }

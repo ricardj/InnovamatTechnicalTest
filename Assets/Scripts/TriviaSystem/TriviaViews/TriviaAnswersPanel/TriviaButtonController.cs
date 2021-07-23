@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[Serializable]
 public class TriviaButtonEvent : UnityEvent<TriviaButtonController> { };
 public class TriviaButtonController : MonoBehaviour
 {
@@ -33,6 +35,11 @@ public class TriviaButtonController : MonoBehaviour
     public void Hide()
     {
         transform.MoveTo(hidePositionPlaceholder,lerpFactor);
+    }
+
+    public void HideFast()
+    {
+        transform.position = hidePositionPlaceholder.transform.position;
     }
 
     public void Show()

@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97c840fb893f33458fb60617a85b59d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triviaManager: {fileID: 1028805319}
   OnAnswerSelected:
     m_PersistentCalls:
       m_Calls: []
@@ -941,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f45fa793cfed5409f67c7d17e4f2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EPSILON: 0.03
+  EPSILON: 0.11
   fadeSpeed: 1
 --- !u!114 &960673271 stripped
 MonoBehaviour:
@@ -1343,6 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfc35ed57625ce4c9465fedb8368458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triviaPanelController: {fileID: 681658410}
   triviaButtons:
   - {fileID: 1891020323}
   - {fileID: 1671583490}

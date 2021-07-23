@@ -5,12 +5,16 @@ using UnityEngine.Events;
 
 public class TriviaPanelController : MonoBehaviour
 {
+    public TriviaManager triviaManager;
+
     public UnityEvent OnAnswerSelected;
 
+    [Header("GUI references")]
     public TriviaQuestionPanelController questionPanel;
     public TriviaAnswersPanelController answersPanel;
 
-    
+
+    bool questionAnsweredCorrectly;
 
     public void ShowTriviaQuestion(ITriviaQuestion triviaQuestion)
     {
@@ -31,12 +35,25 @@ public class TriviaPanelController : MonoBehaviour
 
         answersPanel.ShowAnswers(triviaQuestion.GetAnswers());
 
-        bool questionAnsweredCorrectly = false;
-
+        questionAnsweredCorrectly = false;
         yield return new WaitUntil(() => questionAnsweredCorrectly);
+
+        answersPanel.HideTriviaButtons();
     }
 
-    
+    public bool IsCorrectAnswer(ITriviaAnswer triviaAnswer)
+    {
+        bool isCorrect = triviaManager.IsCorrectAnswer(triviaAnswer);
+        if(isCorrect)
+        {
+            questionAnsweredCorrectly = true;
+        }
+
+        return isCorrect;
+
+    }
+
+
 }
 
 public interface ITriviaQuestion
@@ -49,4 +66,6 @@ public interface ITriviaAnswer
 {
     string GetAnswerText();
     GameObject GetAnswerPrefab();
+
+    TriviaAnswerSO GetTriviaAnswerSO();
 }
