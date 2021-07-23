@@ -11,6 +11,11 @@ public class TriviaAnswersPanelController : MonoBehaviour
     [Header("Animation parameters")]
     public float delayBetweenButtonAnimations = 0.3f;
 
+    private void Start()
+    {
+        HideTriviaButtons();
+    }
+
     public void ShowAnswers(List<ITriviaAnswer> triviaAnswers)
     {
         PopulateButtons(triviaAnswers);

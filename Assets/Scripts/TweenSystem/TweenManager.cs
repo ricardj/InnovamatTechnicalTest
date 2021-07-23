@@ -12,7 +12,7 @@ public class TweenManager : Singleton<TweenManager>
 
     public IEnumerator MoveToSequence(Transform transformToMove, Transform target, float lerpFactor)
     {
-        while (Vector3.Distance(transformToMove.position, target.transform.position) > EPSILON)
+        while (Vector3.Distance(transformToMove.position, target.position) > EPSILON)
         {
             transformToMove.position = Vector3.Lerp(transformToMove.position, target.position, lerpFactor);
             yield return null;

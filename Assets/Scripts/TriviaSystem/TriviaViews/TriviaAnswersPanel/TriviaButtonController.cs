@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
+public class TriviaButtonEvent : UnityEvent<TriviaButtonController> { };
 public class TriviaButtonController : MonoBehaviour
 {
 
@@ -10,10 +12,18 @@ public class TriviaButtonController : MonoBehaviour
     public Transform showPositionPlaceholder;
 
     public Text answerText;
-    
+    public Button button;
+    public Image buttonImage;
+
+    public TriviaButtonEvent OnButtonClicked;
 
     //Animation parameters
-    float lerpFactor = 0.2f;
+    float lerpFactor = 0.01f;
+
+    private void Start()
+    {
+        button.onClick.AddListener(() => OnButtonClicked.Invoke(this));
+    }
 
     public void Configure(ITriviaAnswer triviaAnswers)
     {
@@ -28,6 +38,16 @@ public class TriviaButtonController : MonoBehaviour
     public void Show()
     {
         transform.MoveTo(showPositionPlaceholder, lerpFactor);
+    }
+
+    public void WrongFeedback()
+    {
+        buttonImage.color = Color.red;
+    }
+
+    public void RightFeedback()
+    {
+        buttonImage.color = Color.green;
     }
 }
 

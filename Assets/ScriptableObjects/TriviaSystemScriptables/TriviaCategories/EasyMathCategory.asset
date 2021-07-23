@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37b8123648127f40ade41fa2d3b94f0, type: 3}
   m_Name: EasyMathCategory
   m_EditorClassIdentifier: 
-  categoryDescription: 
-  questionPool: []
+  categoryDescription: Just easy number questions
+  questionPool:
+  - {fileID: 11400000, guid: 9f6cf55bca96dfd4aaca2fc9197035d5, type: 2}
+  - {fileID: 11400000, guid: eff31702a3a41bd4aa74d8d5da945139, type: 2}
+  - {fileID: 11400000, guid: e29029285f1102d49be34a55ef3e418f, type: 2}
+  - {fileID: 11400000, guid: 8a75aaf917170d44cb5f583c63dea32d, type: 2}
+  - {fileID: 11400000, guid: 309dd6ee458ecdf439113d80b0074a8b, type: 2}

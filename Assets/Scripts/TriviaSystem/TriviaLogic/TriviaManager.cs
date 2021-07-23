@@ -10,11 +10,38 @@ public class TriviaManager : MonoBehaviour
 
     public TriviaCategorySO mainQuestionPool;
 
+    public Queue<TriviaQuestionSO> currentQuestionsPool;
 
+    public TriviaPanelController triviaPanelController;
 
-    public void ShowQuestion()
+    public void Start()
     {
+        currentQuestionsPool = new Queue<TriviaQuestionSO>();
+        StartCoroutine(TriviaSequence());
+    }
 
+    public IEnumerator TriviaSequence()
+    {
+        while (true)
+        {
+            FillCurrentQuestions();
+            while(currentQuestionsPool.Count > 0)
+            {
+                TriviaQuestionSO triviaQuestion = currentQuestionsPool.Dequeue();
+                yield return triviaPanelController.ShowTriviaQuestionSequence((ITriviaQuestion)triviaQuestion);
+
+            }
+            yield return null;
+        }
+    }
+
+
+    public void FillCurrentQuestions()
+    {
+        mainQuestionPool.questionPool.ForEach(question =>
+        {
+            currentQuestionsPool.Enqueue(question);
+        });
     }
 
 }

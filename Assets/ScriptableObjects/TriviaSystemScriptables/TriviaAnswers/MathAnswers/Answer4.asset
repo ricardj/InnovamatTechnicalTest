@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 578f1ab82fe1913428ebf52fb8635488, type: 3}
-  m_Name: Number7
+  m_Script: {fileID: 11500000, guid: c55072e815bd81b4f93d0c612c76424f, type: 3}
+  m_Name: Answer4
   m_EditorClassIdentifier: 
-  questionText: Seven
-  rightAnswersPool: []
-  wrongAnswersPool: []
+  answerText: 4
+  answerPrefab: {fileID: 0}

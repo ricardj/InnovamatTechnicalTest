@@ -11,18 +11,25 @@ public class TriviaQuestionPanelController : MonoBehaviour
 
     public Text questionText;
 
+    public float lerpFactor = 0.5f;
+
+    public void Start()
+    {
+        transform.position = rightPlaceholder.transform.position;
+    }
+
     public void ShowQuestion(ITriviaQuestion triviaQuestion)
     {
         questionText.text = triviaQuestion.GetQuestionText();
 
         transform.position = rightPlaceholder.transform.position;
-        transform.MoveTo(centerPlaceholder, 0.2f);
+        transform.MoveTo(centerPlaceholder, lerpFactor);
 
     }
 
     public void HideQuestion()
     {
-        transform.MoveTo(leftPlaceholder, 0.2f);
+        transform.MoveTo(leftPlaceholder, lerpFactor);
     }
 
 }
