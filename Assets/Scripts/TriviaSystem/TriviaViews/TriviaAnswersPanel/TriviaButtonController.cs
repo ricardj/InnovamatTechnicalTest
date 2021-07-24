@@ -42,8 +42,8 @@ public class TriviaButtonController : MonoBehaviour
     {
         if (!IsButtonClicked)
         {
+            BlockButton(); 
             OnButtonClickedEvent.Invoke(this);
-            BlockButton();
         }
     }
 
