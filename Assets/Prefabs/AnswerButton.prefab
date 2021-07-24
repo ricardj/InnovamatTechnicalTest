@@ -155,7 +155,7 @@ MonoBehaviour:
   button: {fileID: 3277484668150938906}
   buttonImage: {fileID: 1638678163767814179}
   canvasGroup: {fileID: 4911618604155927797}
-  OnButtonClicked:
+  OnButtonClickedEvent:
     m_PersistentCalls:
       m_Calls: []
   duration: 0.3

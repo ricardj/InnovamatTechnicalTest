@@ -61,6 +61,6 @@ public class TriviaScorePanelController : MonoBehaviour
 
     public void Show()
     {
-        transform.MoveTo(showPositionPlaceholder, 1f);
+        transform.MoveTo(showPositionPlaceholder, 0.3f);
     }
 }

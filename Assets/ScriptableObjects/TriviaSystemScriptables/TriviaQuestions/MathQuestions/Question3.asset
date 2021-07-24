@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionText: Three
   rightAnswersPool:
-  - {fileID: 11400000, guid: 8288c5fb349357e40aeed67d161e3920, type: 2}
+  - {fileID: 11400000, guid: 9726e741565d80044a930021ca91836b, type: 2}
   wrongAnswersPool:
   - {fileID: 11400000, guid: 669b07d7156883b4fb6190c557398101, type: 2}
   - {fileID: 11400000, guid: 8288c5fb349357e40aeed67d161e3920, type: 2}

@@ -7,6 +7,7 @@ public class LandingCanvasController : MonoBehaviour
 {
     public Text titleText;
     public Text subtitleText;
+    public Button restartButton;
     public Transform hidePositionTitle;
     public Transform hidePositionSubtitle;
 
@@ -17,5 +18,6 @@ public class LandingCanvasController : MonoBehaviour
             titleText.transform.MoveTo(hidePositionTitle, 0.3f);
             subtitleText.transform.MoveTo(hidePositionSubtitle, 0.3f);
         });
+
     }
 }
