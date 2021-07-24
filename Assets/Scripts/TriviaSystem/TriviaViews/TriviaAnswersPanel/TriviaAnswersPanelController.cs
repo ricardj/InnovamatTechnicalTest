@@ -13,17 +13,30 @@ public class TriviaAnswersPanelController : MonoBehaviour
     [Header("Animation parameters")]
     public float delayBetweenButtonAnimations = 0.3f;
 
+    //Flag values
+    bool answersPhaseFinished = false;
+    int remainingAnswerButtons = 3;
+
     private void Start()
     {
         HideButtonsFast();
-        triviaButtons.ForEach(triviaButton => triviaButton.OnButtonClicked.AddListener(OnTriviaButtonClicked));
+        triviaButtons.ForEach(triviaButton => triviaButton.OnButtonClickedEvent.AddListener(OnTriviaButtonClicked));
     }
 
     public void ShowAnswers(List<ITriviaAnswer> triviaAnswers)
     {
+        InitializeFlagValues();
+
         this.triviaAnswers = triviaAnswers;
+
         PopulateButtons(triviaAnswers);
         ShowTriviaButtons();
+    }
+
+    public void InitializeFlagValues()
+    {
+        remainingAnswerButtons = triviaButtons.Count;
+        answersPhaseFinished = false;
     }
 
     public void PopulateButtons(List<ITriviaAnswer> triviaAnswers)
@@ -42,14 +55,50 @@ public class TriviaAnswersPanelController : MonoBehaviour
         bool isCorrect = triviaPanelController.IsCorrectAnswer(triviaAnswers[triviaButtons.IndexOf(triviaButtonController)]);
         if (isCorrect)
         {
-            triviaButtonController.RightFeedback();
+            StartCoroutine(CorrectButtonSequence(triviaButtonController));
         }
         else
         {
-            triviaButtonController.WrongFeedback();
+            StartCoroutine(WrongAnswerButtonSequence(triviaButtonController));
+        }
+    }
+
+
+    public IEnumerator CorrectButtonSequence(TriviaButtonController triviaButtonController)
+    {
+        triviaButtonController.RightFeedback();
+        yield return new WaitForSeconds(1f);
+        HideTriviaButtonsFast();
+        FinishAnswersPhase();
+    }
+
+    public IEnumerator WrongAnswerButtonSequence(TriviaButtonController triviaButtonController)
+    {
+        triviaButtonController.WrongFeedback();
+        if (remainingAnswerButtons > 2)
+        {
+            yield return new WaitForSeconds(0.3f);
+            triviaButtonController.Hide();
+        }
+        else
+        {
+            TriviaButtonController correctTriviaButton = triviaButtons.Find(triviaButton => !triviaButton.IsButtonClicked);
+            correctTriviaButton.BlockButton();
+            correctTriviaButton.RightFeedback();
+            yield return new WaitForSeconds(0.7f);
+            HideTriviaButtonsFast();
+            FinishAnswersPhase();
         }
 
+        remainingAnswerButtons--;
     }
+
+    public void FinishAnswersPhase()
+    {
+        answersPhaseFinished = true;
+
+    }
+
 
     public void ShowTriviaButtons()
     {
@@ -70,6 +119,14 @@ public class TriviaAnswersPanelController : MonoBehaviour
         StartCoroutine(HideTriviaButtonsSequence());
     }
 
+    public void HideTriviaButtonsFast()
+    {
+        for (int i = 0; i < triviaButtons.Count; i++)
+        {
+            triviaButtons[i].Hide();
+        }
+    }
+
     public IEnumerator HideTriviaButtonsSequence()
     {
         for (int i = 0; i < triviaButtons.Count; i++)
@@ -82,5 +139,10 @@ public class TriviaAnswersPanelController : MonoBehaviour
     public void HideButtonsFast()
     {
         triviaButtons.ForEach(triviaButton => triviaButton.HideFast());
+    }
+
+    public bool IsAnswerPhaseFinished()
+    {
+        return answersPhaseFinished;
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class TriviaManager : MonoBehaviour
 {
-    public UnityEvent OnRightAnswer;
+    public UnityEvent OnCorrectAnswer;
     public UnityEvent OnWrongAnswer;
 
     public TriviaCategorySO mainQuestionPool;
@@ -19,11 +20,17 @@ public class TriviaManager : MonoBehaviour
     public void Start()
     {
         currentQuestionsPool = new Queue<TriviaQuestionSO>();
-        StartCoroutine(TriviaSequence());
+
+        GameManager.get.OnGameStart.AddListener(() =>
+        {
+            StartCoroutine(TriviaSequence());
+        });
+
     }
 
     public IEnumerator TriviaSequence()
     {
+        yield return new WaitForSeconds(0.3f); //Initial delay
         while (true)
         {
             FillCurrentQuestions();
@@ -40,7 +47,10 @@ public class TriviaManager : MonoBehaviour
 
     public void FillCurrentQuestions()
     {
-        mainQuestionPool.questionPool.ForEach(question =>
+        //We fill randomly the available questions
+        System.Random rng = new System.Random();
+
+        mainQuestionPool.questionPool.OrderBy(a => rng.Next()).ToList().ForEach(question =>
         {
             currentQuestionsPool.Enqueue(question);
         });
@@ -48,7 +58,16 @@ public class TriviaManager : MonoBehaviour
 
     public bool IsCorrectAnswer(ITriviaAnswer triviaAnswer)
     {
-        return currentTriviaQuestion.IsCorrectAnswer(triviaAnswer.GetTriviaAnswerSO());
+
+        bool isCorrect = currentTriviaQuestion.IsCorrectAnswer(triviaAnswer.GetTriviaAnswerSO());
+
+        if (isCorrect)
+            OnCorrectAnswer.Invoke();
+        else
+            OnWrongAnswer.Invoke();
+
+
+        return isCorrect;
     }
 
 }

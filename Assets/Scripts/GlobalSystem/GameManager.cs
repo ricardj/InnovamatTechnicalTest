@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public UnityEvent OnGameStart;
+    bool gameStarted = false;
+
+
 
     // Update is called once per frame
     void Update()
@@ -17,6 +17,19 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             RestartGame();
 
+        EvaluateStartGame();
+    }
+
+    private void EvaluateStartGame()
+    {
+        if (!gameStarted)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameStarted = true;
+                OnGameStart.Invoke();
+            }
+        }
     }
 
     public void RestartGame()

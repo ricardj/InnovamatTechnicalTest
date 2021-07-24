@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3277484668150938906}
   - component: {fileID: 2423299598121594562}
   - component: {fileID: 3483748268166713010}
+  - component: {fileID: 4911618604155927797}
   m_Layer: 0
   m_Name: AnswerButton
   m_TagString: Untagged
@@ -153,6 +154,24 @@ MonoBehaviour:
   answerText: {fileID: 412824907969038245}
   button: {fileID: 3277484668150938906}
   buttonImage: {fileID: 1638678163767814179}
+  canvasGroup: {fileID: 4911618604155927797}
+  OnButtonClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  duration: 0.3
+  originalButtonImageColor: {r: 0.90196085, g: 0.90196085, b: 0.90196085, a: 1}
+--- !u!225 &4911618604155927797
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468214719127798990}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7799535848143130819
 GameObject:
   m_ObjectHideFlags: 0

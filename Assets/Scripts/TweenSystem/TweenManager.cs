@@ -10,46 +10,86 @@ public class TweenManager : Singleton<TweenManager>
     [Header("Global animation parameters")]
     public float fadeSpeed = 1f;
 
-    public IEnumerator MoveToSequence(Transform transformToMove, Transform target, float lerpFactor)
+    public AnimationCurve globalAnimationCurve;
+
+    private void Start()
     {
-        while (Vector3.Distance(transformToMove.position, target.position) > EPSILON)
+    }
+
+    public IEnumerator MoveToSequence(Transform transformToMove, Transform target, float duration)
+    {
+        float distance = Vector3.Distance(transformToMove.position, target.position);
+        float incrementPerSecond =  distance/ duration;
+        Debug.Log("Increment per second: " + incrementPerSecond);
+        float normalizedCounter = 0;
+        float timeCounter = 0;
+        while (Vector3.Distance(transformToMove.position, target.position) > incrementPerSecond * Time.deltaTime)
         {
-            transformToMove.position = Vector3.Lerp(transformToMove.position, target.position, lerpFactor);
+            normalizedCounter = timeCounter / duration;
+            Vector3 incrementPosition = (target.position - transformToMove.position).normalized * (incrementPerSecond * Time.deltaTime);// * ApplyEasing(normalizedCounter);
+            transformToMove.position = transformToMove.position + incrementPosition;
+            Debug.Log("Increment posiiton " + incrementPosition);
             yield return null;
+            timeCounter += Time.deltaTime;
         }
         transformToMove.position = target.transform.position;
     }
 
-    public IEnumerator FadeToSequence(CanvasGroup canvasGroup, float targetFade)
+    public float ApplyEasing(float normalizedCounter)
+    {
+        return (1 + globalAnimationCurve.Evaluate(normalizedCounter) - normalizedCounter);
+    }
+
+    public IEnumerator FadeToSequence(CanvasGroup canvasGroup, float targetFade, float duration)
     {
 
         if (canvasGroup.alpha < targetFade)
         {
-            yield return IncreaseFadeTo(canvasGroup, targetFade);
+            yield return IncreaseFadeTo(canvasGroup, targetFade, duration);
         }
         else
         {
-            yield return DecreaseFadeTo(canvasGroup, targetFade);
+            yield return DecreaseFadeTo(canvasGroup, targetFade, duration);
         }
         canvasGroup.alpha = targetFade;
     }
 
-    public IEnumerator IncreaseFadeTo(CanvasGroup canvasGroup, float targetFade)
+    public IEnumerator IncreaseFadeTo(CanvasGroup canvasGroup, float targetFade, float duration)
     {
-        while (canvasGroup.alpha < targetFade)
+        float stepPerSecond = (targetFade - canvasGroup.alpha) / duration;
+        while ((targetFade -canvasGroup.alpha) > stepPerSecond *Time.deltaTime )
         {
-            canvasGroup.alpha += fadeSpeed * Time.deltaTime;
+            canvasGroup.alpha += stepPerSecond * Time.deltaTime;
             yield return null;
         }
     }
 
-    public IEnumerator DecreaseFadeTo(CanvasGroup canvasGroup, float targetFade)
+    public IEnumerator DecreaseFadeTo(CanvasGroup canvasGroup, float targetFade, float duration)
     {
-        while (canvasGroup.alpha > targetFade)
+        float stepPerSecond = (targetFade - canvasGroup.alpha) / duration;
+        while ((targetFade - canvasGroup.alpha) < stepPerSecond * Time.deltaTime)
         {
-            canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
+            canvasGroup.alpha += stepPerSecond * Time.deltaTime;
             yield return null;
         }
+    }
+
+    public IEnumerator ShakeSequence(Transform transformToMove, float shakeStrength, float duration)
+    {
+        float counter = 0;
+        Vector3 originalPosition = transformToMove.position;
+        Vector3 randomShake = Vector3.zero;
+        while( counter < duration)
+        {
+            randomShake.x = Random.Range(-1f, 1f);
+            randomShake.y = Random.Range(-1f, 1f);
+            //randomShake.z = Random.Range(-1, 1);
+
+            transformToMove.position = originalPosition + randomShake * shakeStrength;
+            yield return null;
+            counter += Time.deltaTime;
+        }
+        transformToMove.position = originalPosition;
     }
 }
 public class Tween
