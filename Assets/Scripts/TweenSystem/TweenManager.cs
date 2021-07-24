@@ -20,7 +20,7 @@ public class TweenManager : Singleton<TweenManager>
     {
         float distance = Vector3.Distance(transformToMove.position, target.position);
         float incrementPerSecond =  distance/ duration;
-        Debug.Log("Increment per second: " + incrementPerSecond);
+
         float normalizedCounter = 0;
         float timeCounter = 0;
         while (Vector3.Distance(transformToMove.position, target.position) > incrementPerSecond * Time.deltaTime)
@@ -28,7 +28,7 @@ public class TweenManager : Singleton<TweenManager>
             normalizedCounter = timeCounter / duration;
             Vector3 incrementPosition = (target.position - transformToMove.position).normalized * (incrementPerSecond * Time.deltaTime);// * ApplyEasing(normalizedCounter);
             transformToMove.position = transformToMove.position + incrementPosition;
-            Debug.Log("Increment posiiton " + incrementPosition);
+
             yield return null;
             timeCounter += Time.deltaTime;
         }
