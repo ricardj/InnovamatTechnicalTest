@@ -85,7 +85,7 @@ public class TriviaButtonController : MonoBehaviour
     {
         buttonImage.color = Color.red;
         shadow.effectColor = Color.red;
-        transform.Shake(1f, 0.3f);
+        transform.Shake(3f, 0.3f);
     }
 
     public void RightFeedback()

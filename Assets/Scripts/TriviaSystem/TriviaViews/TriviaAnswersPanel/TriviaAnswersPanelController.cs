@@ -67,6 +67,7 @@ public class TriviaAnswersPanelController : MonoBehaviour
     public IEnumerator CorrectButtonSequence(TriviaButtonController triviaButtonController)
     {
         triviaButtonController.RightFeedback();
+        triviaButtons.ForEach(triviaButton => triviaButton.BlockButton());
         yield return new WaitForSeconds(1f);
         HideTriviaButtonsFast();
         FinishAnswersPhase();

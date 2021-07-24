@@ -14,7 +14,7 @@ public class TriviaPanelController : MonoBehaviour
     public TriviaAnswersPanelController answersPanel;
 
 
-    bool answerPhaseFinished;
+
 
     public void ShowTriviaQuestion(ITriviaQuestion triviaQuestion)
     {
@@ -42,13 +42,7 @@ public class TriviaPanelController : MonoBehaviour
     public bool IsCorrectAnswer(ITriviaAnswer triviaAnswer)
     {
         bool isCorrect = triviaManager.IsCorrectAnswer(triviaAnswer);
-        if(isCorrect)
-        {
-            answerPhaseFinished = true;
-        }
-
         return isCorrect;
-
     }
 
 
