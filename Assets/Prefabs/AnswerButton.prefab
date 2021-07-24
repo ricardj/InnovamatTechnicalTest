@@ -154,12 +154,14 @@ MonoBehaviour:
   answerText: {fileID: 412824907969038245}
   button: {fileID: 3277484668150938906}
   buttonImage: {fileID: 1638678163767814179}
+  shadow: {fileID: 2423299598121594562}
   canvasGroup: {fileID: 4911618604155927797}
   OnButtonClickedEvent:
     m_PersistentCalls:
       m_Calls: []
   duration: 0.3
   originalButtonImageColor: {r: 0.90196085, g: 0.90196085, b: 0.90196085, a: 1}
+  originalShadowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!225 &4911618604155927797
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -168,7 +170,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4468214719127798990}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -207,7 +209,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00017452, y: -0.00017548}
-  m_SizeDelta: {x: 96.12964, y: 110.18692}
+  m_SizeDelta: {x: 79.897644, y: 95.98392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7626031143467218458
 CanvasRenderer:
@@ -247,6 +249,6 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Answer text
+  m_Text: To be or not to be...

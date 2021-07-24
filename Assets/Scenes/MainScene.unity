@@ -192,9 +192,9 @@ RectTransform:
   m_Father: {fileID: 378532347}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53.34584, y: -24.33414}
   m_SizeDelta: {x: 91.59453, y: 22.445992}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &35582764
@@ -1779,13 +1779,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5b3e1b6e6e5fa4bb8815cfed8776d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainQuestionPool: {fileID: 11400000, guid: 22774683f32f9604591dc3a93940c877, type: 2}
   OnCorrectAnswer:
     m_PersistentCalls:
       m_Calls: []
   OnWrongAnswer:
     m_PersistentCalls:
       m_Calls: []
-  mainQuestionPool: {fileID: 11400000, guid: 22774683f32f9604591dc3a93940c877, type: 2}
   triviaPanelController: {fileID: 681658410}
 --- !u!1 &1118700845
 GameObject:
@@ -2776,7 +2776,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 921.04443, y: 30}
+  m_SizeDelta: {x: 2500.3308, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1702564982
 MonoBehaviour:
@@ -3153,9 +3153,9 @@ RectTransform:
   m_Father: {fileID: 378532347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53.34584, y: -0.6293831}
   m_SizeDelta: {x: 91.59453, y: 22.445992}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2053713353

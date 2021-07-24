@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c37b8123648127f40ade41fa2d3b94f0, type: 3}
-  m_Name: FunnyCategory
+  m_Script: {fileID: 11500000, guid: c55072e815bd81b4f93d0c612c76424f, type: 3}
+  m_Name: AnswerNoOneKnows
   m_EditorClassIdentifier: 
-  categoryDescription: 
-  questionPool: []
+  answerText: No one knows
+  answerPrefab: {fileID: 0}

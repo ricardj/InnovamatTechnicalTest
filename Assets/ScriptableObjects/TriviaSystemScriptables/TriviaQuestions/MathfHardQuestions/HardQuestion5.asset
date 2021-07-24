@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578f1ab82fe1913428ebf52fb8635488, type: 3}
+  m_Name: HardQuestion5
+  m_EditorClassIdentifier: 
+  questionText: '2 - 1 + 4 = '
+  rightAnswersPool:
+  - {fileID: 11400000, guid: 8288c5fb349357e40aeed67d161e3920, type: 2}
+  wrongAnswersPool:
+  - {fileID: 11400000, guid: 3101cd1fecf6a954d8270bf36c5ffb35, type: 2}
+  - {fileID: 11400000, guid: 62ba9be72e92b99478ed0fab1bb273c9, type: 2}
+  - {fileID: 11400000, guid: 275c3a7fd0a1d694ba091f6cfc04e9fc, type: 2}
+  - {fileID: 11400000, guid: 163ab8921660fa54eb02c0b26edfbba9, type: 2}
+  - {fileID: 11400000, guid: 48e31e9ed06f7a143abe4df783ed03a4, type: 2}
+  - {fileID: 11400000, guid: 6874fef268e8a5f41afbe3b56ed07d53, type: 2}
+  - {fileID: 11400000, guid: 9726e741565d80044a930021ca91836b, type: 2}
+  - {fileID: 11400000, guid: 669b07d7156883b4fb6190c557398101, type: 2}

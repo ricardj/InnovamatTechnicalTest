@@ -16,6 +16,7 @@ public class TriviaButtonController : MonoBehaviour
     public Text answerText;
     public Button button;
     public Image buttonImage;
+    public Shadow shadow;
     public CanvasGroup canvasGroup;
 
     public TriviaButtonEvent OnButtonClickedEvent;
@@ -24,6 +25,7 @@ public class TriviaButtonController : MonoBehaviour
     //Animation parameters
     public float duration = 0.3f;
     public Color originalButtonImageColor;
+    public Color originalShadowColor;
 
     //Flag values
     bool buttonClicked = false;
@@ -32,6 +34,7 @@ public class TriviaButtonController : MonoBehaviour
     private void Start()
     {
         originalButtonImageColor = buttonImage.color;
+        originalShadowColor = shadow.effectColor;
         button.onClick.AddListener(OnButtonClicked);
     }
 
@@ -39,8 +42,8 @@ public class TriviaButtonController : MonoBehaviour
     {
         if (!IsButtonClicked)
         {
-            IsButtonClicked = true;
             OnButtonClickedEvent.Invoke(this);
+            BlockButton();
         }
     }
 
@@ -48,8 +51,7 @@ public class TriviaButtonController : MonoBehaviour
     {
         answerText.text = triviaAnswers.GetAnswerText();
         RestartButtonColor();
-        IsButtonClicked = false;
-
+        UnblockButton();
     }
 
     public void Hide()
@@ -75,22 +77,32 @@ public class TriviaButtonController : MonoBehaviour
     public void RestartButtonColor()
     {
         buttonImage.color = originalButtonImageColor;
+        shadow.effectColor = originalShadowColor;
     }
 
 
     public void WrongFeedback()
     {
         buttonImage.color = Color.red;
+        shadow.effectColor = Color.red;
         transform.Shake(1f, 0.3f);
     }
 
     public void RightFeedback()
     {
+        shadow.effectColor = Color.green;
         buttonImage.color = Color.green;
+    }
+
+    public void UnblockButton()
+    {
+        button.enabled = true;
+        IsButtonClicked = false;
     }
 
     public void BlockButton()
     {
+        button.enabled = false;
         IsButtonClicked = true;
     }
 }

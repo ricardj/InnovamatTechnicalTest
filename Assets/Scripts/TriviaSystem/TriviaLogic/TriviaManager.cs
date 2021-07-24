@@ -6,14 +6,18 @@ using UnityEngine.Events;
 
 public class TriviaManager : MonoBehaviour
 {
+    [Header("Current trivia category")]
+    public TriviaCategorySO mainQuestionPool;
+    public Queue<TriviaQuestionSO> currentQuestionsPool;
+
+    [Header("Trivia events")]
     public UnityEvent OnCorrectAnswer;
     public UnityEvent OnWrongAnswer;
 
-    public TriviaCategorySO mainQuestionPool;
-
-    public Queue<TriviaQuestionSO> currentQuestionsPool;
-
+    [Header("GUI reference")]
     public TriviaPanelController triviaPanelController;
+
+
 
     TriviaQuestionSO currentTriviaQuestion;
 

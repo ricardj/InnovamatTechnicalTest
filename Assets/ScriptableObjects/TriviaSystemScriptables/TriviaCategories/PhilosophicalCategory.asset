@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c37b8123648127f40ade41fa2d3b94f0, type: 3}
+  m_Name: PhilosophicalCategory
+  m_EditorClassIdentifier: 
+  categoryDescription: Random questions about life
+  questionPool:
+  - {fileID: 11400000, guid: 336c9b7409359b84c8850e90236798cd, type: 2}
+  - {fileID: 11400000, guid: d9a7992e2ebd7d648b660bda01393e22, type: 2}
+  - {fileID: 11400000, guid: 75ea40ea2cab91e48a30ef5debb08fe1, type: 2}
