@@ -57,7 +57,6 @@ public interface ITriviaQuestion
 public interface ITriviaAnswer
 {
     string GetAnswerText();
-    GameObject GetAnswerPrefab();
 
     TriviaAnswerSO GetTriviaAnswerSO();
 }

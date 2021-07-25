@@ -7,7 +7,7 @@ public class LandingCanvasController : MonoBehaviour
 {
     public Text titleText;
     public Text subtitleText;
-    public Button restartButton;
+
     public Transform hidePositionTitle;
     public Transform hidePositionSubtitle;
 

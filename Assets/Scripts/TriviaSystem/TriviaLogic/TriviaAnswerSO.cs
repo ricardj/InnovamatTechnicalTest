@@ -6,13 +6,6 @@ using UnityEngine;
 public class TriviaAnswerSO : ScriptableObject, ITriviaAnswer
 {
     public string answerText;
-    public GameObject answerPrefab;
-
-
-    GameObject ITriviaAnswer.GetAnswerPrefab()
-    {
-        return answerPrefab;
-    }
 
     string ITriviaAnswer.GetAnswerText()
     {
